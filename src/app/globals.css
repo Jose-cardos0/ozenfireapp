@@ -1,0 +1,569 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-pink: #ff99cc;
+  --primary-white: #ffff;
+  --secondary-purple: #e91e63;
+  --accent-pink: #ff69b4;
+  --light-pink: #ffb6c1;
+  --soft-purple: #dda0dd;
+  --clean-pink: #ffe8f2;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Animações personalizadas */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--primary-pink),
+    var(--soft-purple),
+    var(--primary-pink)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Botão feminino personalizado */
+.feminine-button {
+  background: linear-gradient(
+    135deg,
+    var(--primary-pink),
+    var(--secondary-purple)
+  );
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 153, 204, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.feminine-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 153, 204, 0.4);
+}
+
+.feminine-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.feminine-button:hover:before {
+  left: 100%;
+}
+
+/* Input feminino */
+.feminine-input {
+  background: var(--clean-pink);
+  color: black;
+  border: 2px solid var(--light-pink);
+  border-radius: 15px;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(255, 153, 204, 0.1);
+}
+
+.feminine-input:focus {
+  outline: none;
+  border-color: var(--primary-pink);
+  box-shadow: 0 4px 20px rgba(255, 153, 204, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Select feminino */
+.feminine-select {
+  background: var(--clean-pink);
+  border: 2px solid var(--light-pink);
+  color: black;
+  border-radius: 15px;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(255, 153, 204, 0.1);
+  cursor: pointer;
+}
+
+.feminine-select:focus {
+  outline: none;
+  color: black;
+  border-color: var(--primary-pink);
+  box-shadow: 0 4px 20px rgba(255, 153, 204, 0.2);
+}
+
+/* Textarea feminino */
+.feminine-textarea {
+  background: var(--clean-pink);
+  color: black;
+  border: 2px solid var(--light-pink);
+  border-radius: 15px;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(255, 153, 204, 0.1);
+  resize: vertical;
+  min-height: 80px;
+}
+
+.feminine-textarea:focus {
+  outline: none;
+  border-color: var(--primary-pink);
+  box-shadow: 0 4px 20px rgba(255, 153, 204, 0.2);
+}
+
+/* Checkbox feminino */
+.feminine-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--light-pink);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.feminine-checkbox:checked {
+  background: var(--primary-pink);
+  border-color: var(--primary-pink);
+  box-shadow: 0 0 10px rgba(255, 153, 204, 0.3);
+}
+
+.feminine-checkbox:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Loading spinner feminino */
+.feminine-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--light-pink);
+  border-top: 4px solid var(--primary-pink);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Gradientes de fundo */
+.bg-feminine-gradient {
+  background: linear-gradient(135deg, #ffe5f1, #fff0f5, #f8e6f0);
+}
+
+.bg-feminine-gradient-alt {
+  background: linear-gradient(135deg, #ff99cc, #ffb6c1, #dda0dd);
+}
+
+/* Sombras femininas */
+.shadow-feminine {
+  box-shadow: 0 4px 20px rgba(255, 153, 204, 0.15);
+}
+
+.shadow-feminine-hover {
+  box-shadow: 0 8px 30px rgba(255, 153, 204, 0.25);
+}
+
+/* Transições suaves */
+.transition-feminine {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effects */
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 153, 204, 0.3);
+}
+
+/* Estilos específicos para impressão */
+@media print {
+  /* Reset básico para impressão */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ocultar elementos desnecessários */
+  .feminine-button,
+  .bg-feminine-gradient {
+    display: none !important;
+  }
+
+  /* Manter fundos importantes */
+  .bg-white {
+    background: white !important;
+  }
+
+  .bg-pink-50 {
+    background: #fdf2f8 !important;
+  }
+
+  .bg-purple-50 {
+    background: #faf5ff !important;
+  }
+
+  .bg-gradient-to-r {
+    background: linear-gradient(to right, #f3e8ff, #fdf2f8) !important;
+  }
+
+  /* Otimizar quebras de página */
+  .print\:break-inside-avoid {
+    break-inside: avoid;
+  }
+
+  /* Ajustar margens para A4 */
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  /* Manter cores importantes para legibilidade */
+  body {
+    font-size: 11pt;
+    line-height: 1.3;
+    color: #333 !important;
+  }
+
+  /* Manter títulos visíveis */
+  h1,
+  h2,
+  h3 {
+    color: #333 !important;
+    page-break-after: avoid;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  /* Manter bordas visíveis */
+  .border-l-4 {
+    border-left: 2px solid #333 !important;
+  }
+
+  /* Otimizar cards para impressão */
+  .bg-pink-50,
+  .bg-purple-50 {
+    border: 1px solid #ddd !important;
+    margin-bottom: 1em;
+    padding: 0.75em !important;
+  }
+
+  /* Manter gradientes como cores sólidas */
+  .bg-gradient-to-r.from-pink-400.via-purple-400.to-pink-500 {
+    background: #ec4899 !important;
+    color: white !important;
+  }
+
+  /* Manter sombras como bordas */
+  .shadow-feminine {
+    border: 1px solid #e5e7eb !important;
+  }
+
+  /* Otimizar espaçamentos */
+  .p-8 {
+    padding: 1em !important;
+  }
+
+  .p-6 {
+    padding: 0.75em !important;
+  }
+
+  .mb-8 {
+    margin-bottom: 1em !important;
+  }
+
+  .mb-6 {
+    margin-bottom: 0.75em !important;
+  }
+
+  .mb-4 {
+    margin-bottom: 0.5em !important;
+  }
+
+  .mb-3 {
+    margin-bottom: 0.375em !important;
+  }
+
+  .mb-2 {
+    margin-bottom: 0.25em !important;
+  }
+
+  .mt-6 {
+    margin-top: 0.75em !important;
+  }
+
+  .mt-4 {
+    margin-top: 0.5em !important;
+  }
+
+  /* Manter cores de texto importantes */
+  .text-pink-500,
+  .text-pink-600 {
+    color: #be185d !important;
+  }
+
+  .text-purple-600 {
+    color: #9333ea !important;
+  }
+
+  .text-gray-700 {
+    color: #374151 !important;
+  }
+
+  .text-gray-800 {
+    color: #1f2937 !important;
+  }
+
+  /* Manter opacidades */
+  .opacity-90 {
+    opacity: 0.9 !important;
+  }
+
+  .opacity-70 {
+    opacity: 0.7 !important;
+  }
+
+  /* Manter tamanhos de fonte */
+  .text-4xl {
+    font-size: 2em !important;
+  }
+
+  .text-2xl {
+    font-size: 1.5em !important;
+  }
+
+  .text-xl {
+    font-size: 1.25em !important;
+  }
+
+  .text-lg {
+    font-size: 1.125em !important;
+  }
+
+  .text-sm {
+    font-size: 0.875em !important;
+  }
+
+  .text-xs {
+    font-size: 0.75em !important;
+  }
+
+  /* Manter pesos de fonte */
+  .font-bold {
+    font-weight: bold !important;
+  }
+
+  .font-semibold {
+    font-weight: 600 !important;
+  }
+
+  .font-medium {
+    font-weight: 500 !important;
+  }
+
+  /* Manter alinhamentos */
+  .text-center {
+    text-align: center !important;
+  }
+
+  /* Manter grid layout */
+  .grid {
+    display: grid !important;
+  }
+
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .gap-6 {
+    gap: 1.5em !important;
+  }
+
+  /* Manter flexbox */
+  .flex {
+    display: flex !important;
+  }
+
+  .items-center {
+    align-items: center !important;
+  }
+
+  .justify-center {
+    justify-content: center !important;
+  }
+
+  .justify-between {
+    justify-content: space-between !important;
+  }
+
+  /* Manter espaçamentos */
+  .space-y-6 > * + * {
+    margin-top: 1.5em !important;
+  }
+
+  .space-y-4 > * + * {
+    margin-top: 1em !important;
+  }
+
+  .space-y-2 > * + * {
+    margin-top: 0.5em !important;
+  }
+
+  /* Manter bordas arredondadas como retângulos */
+  .rounded-3xl {
+    border-radius: 0 !important;
+  }
+
+  .rounded-2xl {
+    border-radius: 0 !important;
+  }
+
+  .rounded-lg {
+    border-radius: 0 !important;
+  }
+
+  /* Manter overflow */
+  .overflow-hidden {
+    overflow: visible !important;
+  }
+
+  /* Manter max-width */
+  .max-w-4xl {
+    max-width: none !important;
+  }
+
+  /* Manter mx-auto */
+  .mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Manter p-6 */
+  .p-6 {
+    padding: 0.75em !important;
+  }
+}
+
+/* Estilos para a página de resultado */
+.prose {
+  max-width: none;
+}
+
+.prose h3 {
+  color: var(--secondary-purple);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose p {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  list-style: none;
+}
+
+/* Animações suaves para elementos da página de resultado */
+.bg-white\/80 {
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.bg-white\/80:hover {
+  backdrop-filter: blur(12px);
+  transform: translateY(-2px);
+}
+
+/* Responsividade para impressão */
+@media print and (max-width: 768px) {
+  .max-w-4xl {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .rounded-3xl {
+    border-radius: 0 !important;
+  }
+}
