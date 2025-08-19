@@ -4,18 +4,18 @@
   "description": "Crie sua cartilha de treino personalizada com inteligência artificial, focado no universo feminino",
   "icons": [
     {
-      "src": "ozemfirelogo.png.png",
+      "src": "iconozen.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png"
     },
     {
-      "src": "ozemfirelogo.png.png",
+      "src": "ozen192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "ozemfirelogo.png.png",
+      "src": "ozen512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"

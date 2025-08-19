@@ -245,63 +245,40 @@ export default function FormData() {
   };
 
   return (
-    <main className="min-h-screen bg-feminine-gradient relative">
-      {/* Header com logo */}
-      <div className="absolute top-6 left-6 z-10">
-        <Link href="/">
-          <Image
-            src="/ozemfirelogo.png.png"
-            alt="Ozemfire Logo"
-            width={50}
-            height={50}
-            className="drop-shadow-lg hover:scale-110 transition-transform duration-300"
-          />
-        </Link>
-      </div>
-
-      {loading ? (
-        <section className="h-screen z-50 bg-black/80 w-screen absolute flex flex-col items-center justify-center m-auto">
-          <div className="feminine-spinner"></div>
-          <p className="pt-8 font-light text-lg ml-2 animate-pulse text-center text-white">
-            Aguarde,{" "}
-            <span className="text-pink-300 font-medium">Ozemfire IA</span> está{" "}
-            <br />
-            analisando seus dados... ✨
-          </p>
-        </section>
-      ) : null}
-
-      <section className="min-h-screen flex flex-col items-center justify-center m-auto px-6 py-20">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-pink-500 bg-clip-text text-transparent mb-4">
+    <main className="min-h-screen bg-feminine-gradient py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-pink-500 bg-clip-text text-transparent mb-3 sm:mb-4">
             Crie Seu Treino Personalizado
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-2 sm:px-0">
             Preencha as informações abaixo e nossa IA criará um plano de treino
             e dieta
-            <span className="text-pink-500 font-medium">
+            <span className="text-pink-500 font-medium block sm:inline">
               {" "}
               feito especialmente para você
             </span>
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="w-full max-w-2xl">
-          <div id="form1" className="space-y-6">
-            {/* Informações básicas */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-feminine">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center flex items-center justify-center gap-2">
-                <User className="w-6 h-6 text-pink-500" />
+        <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto">
+          {/* Primeira etapa - Informações básicas */}
+          <div id="form1" className="w-full h-auto space-y-4 sm:space-y-6">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-feminine">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6 text-center flex items-center justify-center gap-2">
+                <User className="w-5 h-5 sm:w-6 sm:h-6 text-pink-500" />
                 Informações Básicas
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="space-y-4 sm:space-y-6">
+                {/* Nome */}
+                <div className="mb-4 sm:mb-6">
+                  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                     Nome
                   </label>
                   <input
-                    className="feminine-input w-full"
+                    className="feminine-input w-full text-sm sm:text-base"
                     required
                     type="text"
                     name="name"
@@ -311,42 +288,46 @@ export default function FormData() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Idade
-                  </label>
-                  <input
-                    className="feminine-input w-full"
-                    required
-                    type="number"
-                    name="idade"
-                    placeholder="Sua idade"
-                    value={idade}
-                    onChange={(e) => setIdade(e.target.value)}
-                  />
+                {/* Idade e Peso em linha no mobile */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="mb-4 sm:mb-6">
+                    <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                      Idade
+                    </label>
+                    <input
+                      className="feminine-input w-full text-sm sm:text-base"
+                      required
+                      type="number"
+                      name="idade"
+                      placeholder="Sua idade"
+                      value={idade}
+                      onChange={(e) => setIdade(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="mb-4 sm:mb-6">
+                    <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                      Peso (kg)
+                    </label>
+                    <input
+                      className="feminine-input w-full text-sm sm:text-base"
+                      type="number"
+                      required
+                      name="peso"
+                      placeholder="Seu peso"
+                      value={peso}
+                      onChange={(e) => setPeso(e.target.value)}
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Peso (kg)
-                  </label>
-                  <input
-                    className="feminine-input w-full"
-                    type="number"
-                    required
-                    name="peso"
-                    placeholder="Seu peso"
-                    value={peso}
-                    onChange={(e) => setPeso(e.target.value)}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                {/* Altura */}
+                <div className="mb-4 sm:mb-6">
+                  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                     Altura (m)
                   </label>
                   <input
-                    className="feminine-input w-full"
+                    className="feminine-input w-full text-sm sm:text-base"
                     name="altura"
                     required
                     placeholder="Ex: 1.60"
@@ -354,418 +335,326 @@ export default function FormData() {
                     onChange={(e) => setAltura(e.target.value)}
                   />
                 </div>
+
+                {/* Sexo e Frequência em linha no mobile */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="mb-4 sm:mb-6">
+                    <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                      Sexo
+                    </label>
+                    <select
+                      className="feminine-select w-full text-sm sm:text-base"
+                      name="sexo"
+                      required
+                      value={sexo}
+                      onChange={(e) => setSexo(e.target.value)}
+                    >
+                      <option value="">Selecione seu sexo</option>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Feminino">Feminino</option>
+                    </select>
+                  </div>
+
+                  <div className="mb-4 sm:mb-6">
+                    <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                      Frequência de treino
+                    </label>
+                    <select
+                      className="feminine-select w-full text-sm sm:text-base"
+                      name="frequencia"
+                      required
+                      value={frequencia}
+                      onChange={(e) => setFrequencia(e.target.value)}
+                    >
+                      <option value="">Selecione a frequência</option>
+                      <option value="não faço ne um exercício físico">
+                        Não me exercito
+                      </option>
+                      <option value="7 dias">7 dias na semana</option>
+                      <option value="5 dias">5 dias na semana</option>
+                      <option value="3 dias">3 dias na semana</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Objetivo */}
+                <div className="mb-4 sm:mb-6">
+                  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                    Objetivo
+                  </label>
+                  <select
+                    className="feminine-select w-full text-sm sm:text-base"
+                    name="objetivo"
+                    required
+                    value={objetivo}
+                    onChange={(e) => setObjetivo(e.target.value)}
+                  >
+                    <option value="">Selecione seu objetivo</option>
+                    <option value="Hipertrofia">Hipertrofia</option>
+                    <option value="Perca de peso">Perda de peso</option>
+                    <option value="Manutenção da saúde">
+                      Manutenção da saúde
+                    </option>
+                  </select>
+                </div>
               </div>
 
-              <div className="mt-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Sexo
-                </label>
-                <select
-                  className="feminine-select w-full"
-                  name="sexo"
-                  required
-                  value={sexo}
-                  onChange={(e) => setSexo(e.target.value)}
-                >
-                  <option value="">Selecione seu sexo</option>
-                  <option value="Masculino">Masculino</option>
-                  <option value="Feminino">Feminino</option>
-                </select>
-              </div>
-
-              <div className="mt-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Frequência de treino
-                </label>
-                <select
-                  className="feminine-select w-full"
-                  name="frequencia"
-                  required
-                  value={frequencia}
-                  onChange={(e) => setFrequencia(e.target.value)}
-                >
-                  <option value="">Selecione a frequência</option>
-                  <option value="não faço ne um exercício físico">
-                    Não me exercito
-                  </option>
-                  <option value="7 dias">7 dias na semana</option>
-                  <option value="5 dias">5 dias na semana</option>
-                  <option value="3 dias">3 dias na semana</option>
-                </select>
-              </div>
-
-              <div className="mt-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Objetivo
-                </label>
-                <select
-                  className="feminine-select w-full"
-                  name="objetivo"
-                  required
-                  value={objetivo}
-                  onChange={(e) => setObjetivo(e.target.value)}
-                >
-                  <option value="">Selecione seu objetivo</option>
-                  <option value="Hipertrofia">Hipertrofia</option>
-                  <option value="Perca de peso">Perda de peso</option>
-                  <option value="Manutenção da saúde">
-                    Manutenção da saúde
-                  </option>
-                </select>
-              </div>
-
-              <div className="flex justify-center mt-8">
+              {/* Botão próximo */}
+              <div className="text-center mt-6 sm:mt-8">
                 <button
-                  onClick={() => {
-                    const dietaDiv1 = document.getElementById("form1");
-                    const dietaDiv = document.getElementById("form2");
-                    const camposObrigatorios = [
-                      nome,
-                      idade,
-                      peso,
-                      altura,
-                      sexo,
-                      frequencia,
-                      objetivo,
-                    ];
-
-                    const camposVazios = camposObrigatorios.filter(
-                      (campo) => campo === ""
-                    );
-
-                    if (camposVazios.length > 0) {
-                      alert(
-                        "Por favor, preencha todos os campos obrigatórios."
-                      );
-                      return false;
-                    } else {
-                      dietaDiv1?.classList.add("hidden");
-                      dietaDiv?.classList.remove("hidden");
-                    }
-
-                    return true;
-                  }}
                   type="button"
-                  className="feminine-button px-8 py-3 text-lg"
+                  onClick={() => {
+                    document.getElementById("form1")?.classList.add("hidden");
+                    document
+                      .getElementById("form2")
+                      ?.classList.remove("hidden");
+                  }}
+                  className="feminine-button px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Próximo <ArrowRight className="w-5 h-5" />
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Próximo <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </span>
                 </button>
               </div>
             </div>
           </div>
 
-          <div id="form2" className="w-full h-auto hidden space-y-6">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-feminine">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center flex items-center justify-center gap-2">
-                <Apple className="w-6 h-6 text-pink-500" />
+          {/* Segunda etapa - Informações adicionais */}
+          <div
+            id="form2"
+            className="w-full h-auto hidden space-y-4 sm:space-y-6"
+          >
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-feminine">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6 text-center flex items-center justify-center gap-2">
+                <Apple className="w-5 h-5 sm:w-6 sm:h-6 text-pink-500" />
                 Informações Adicionais
               </h3>
 
-              <div className="mb-6">
-                <p className="text-sm font-medium text-gray-700 mb-4">
-                  Você tem algum problema de saúde?
-                </p>
-                <div className="flex items-center justify-center gap-8">
-                  <div className="flex items-center">
-                    <input
-                      onClick={() => {
-                        const inputSaude =
-                          document.getElementById("inputSaude");
-                        inputSaude?.classList.remove("hidden");
-                      }}
-                      id="sim"
-                      type="checkbox"
-                      name="checkbox"
-                      checked={checkedSim}
-                      onChange={() => {
-                        setCheckedSim(true);
-                        setCheckedNao(false);
-                      }}
-                      className="feminine-checkbox"
-                    />
-                    <label className="text-gray-700 text-sm ml-3 font-medium">
-                      Sim
-                    </label>
+              <div className="space-y-4 sm:space-y-6">
+                {/* Problema de saúde */}
+                <div className="mb-4 sm:mb-6">
+                  <p className="text-sm sm:text-base font-medium text-gray-700 mb-3 sm:mb-4">
+                    Você tem algum problema de saúde?
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-center gap-4 sm:gap-8">
+                    <div className="flex items-center">
+                      <input
+                        onClick={() => {
+                          const inputSaude =
+                            document.getElementById("inputSaude");
+                          inputSaude?.classList.remove("hidden");
+                        }}
+                        id="sim"
+                        type="checkbox"
+                        name="checkbox"
+                        checked={checkedSim}
+                        onChange={() => {
+                          setCheckedSim(true);
+                          setCheckedNao(false);
+                        }}
+                        className="feminine-checkbox"
+                      />
+                      <label className="text-gray-700 text-sm sm:text-base ml-3 font-medium">
+                        Sim
+                      </label>
+                    </div>
+                    <div className="flex items-center">
+                      <input
+                        onClick={() => {
+                          const inputSaude =
+                            document.getElementById("inputSaude");
+                          inputSaude?.classList.add("hidden");
+                        }}
+                        id="nao"
+                        type="checkbox"
+                        name="checkbox"
+                        checked={checkedNao}
+                        onChange={() => {
+                          setCheckedSim(false);
+                          setCheckedNao(true);
+                        }}
+                        className="feminine-checkbox"
+                      />
+                      <label className="text-gray-700 text-sm sm:text-base ml-3 font-medium">
+                        Não
+                      </label>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <input
-                      onClick={() => {
-                        const inputSaude =
-                          document.getElementById("inputSaude");
-                        inputSaude?.classList.add("hidden");
-                      }}
-                      id="nao"
-                      type="checkbox"
-                      name="checkbox"
-                      checked={checkedNao}
-                      onChange={() => {
-                        setCheckedSim(false);
-                        setCheckedNao(true);
-                      }}
-                      className="feminine-checkbox"
-                    />
-                    <label className="text-gray-700 text-sm ml-3 font-medium">
-                      Não
-                    </label>
-                  </div>
+                </div>
+
+                {/* Input problema de saúde */}
+                <div
+                  id="inputSaude"
+                  className={`mb-4 sm:mb-6 ${checkedSim ? "" : "hidden"}`}
+                >
+                  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                    Qual problema de saúde?
+                  </label>
+                  <textarea
+                    className="feminine-textarea w-full text-sm sm:text-base"
+                    value={problemSaude}
+                    onChange={(e) => setProblemSaude(e.target.value)}
+                    placeholder="Descreva seu problema de saúde..."
+                    rows={3}
+                  ></textarea>
+                </div>
+
+                {/* Alimentos incluídos */}
+                <div className="mb-4 sm:mb-6">
+                  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                    Quais alimentos você quer incluir em sua dieta?
+                  </label>
+                  <textarea
+                    required
+                    className="feminine-textarea w-full text-sm sm:text-base"
+                    value={alimentos}
+                    onChange={(e) => setAlimentos(e.target.value)}
+                    placeholder="Ex: frutas, verduras, carnes magras..."
+                    rows={3}
+                  ></textarea>
+                </div>
+
+                {/* Alimentos alergicos */}
+                <div className="mb-6 sm:mb-8">
+                  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                    Quais alimentos você não deseja incluir?
+                  </label>
+                  <textarea
+                    className="feminine-textarea w-full text-sm sm:text-base"
+                    value={alergicos}
+                    onChange={(e) => setAlergicos(e.target.value)}
+                    placeholder="Ex: glúten, lactose, frutos do mar..."
+                    rows={3}
+                  ></textarea>
                 </div>
               </div>
 
-              <div id="inputSaude" className="hidden mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Descreva seu problema de saúde:
-                </label>
-                <input
-                  className="feminine-input w-full"
-                  type="text"
-                  name="saude"
-                  placeholder="Qual seu problema de saúde?"
-                  value={problemSaude}
-                  onChange={(e) => setProblemSaude(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Quais alimentos você quer incluir em sua dieta?
-                </label>
-                <textarea
-                  required
-                  className="feminine-textarea w-full"
-                  value={alimentos}
-                  onChange={(e) => setAlimentos(e.target.value)}
-                  placeholder="Ex: frutas, verduras, carnes magras..."
-                ></textarea>
-              </div>
-
-              <div className="mb-8">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Quais alimentos você não deseja incluir?
-                </label>
-                <textarea
-                  className="feminine-textarea w-full"
-                  value={alergicos}
-                  onChange={(e) => setAlergicos(e.target.value)}
-                  placeholder="Ex: glúten, lactose, frutos do mar..."
-                ></textarea>
-              </div>
-
-              <div className="flex justify-center">
+              {/* Botões de navegação */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <button
-                  onClick={() => {
-                    const dietaDiv2 = document.getElementById("form2");
-                    const dietaDiv3 = document.getElementById("form3");
-                    dietaDiv2?.classList.add("hidden");
-                    dietaDiv3?.classList.remove("hidden");
-                  }}
                   type="button"
-                  className="feminine-button px-8 py-3 text-lg"
+                  onClick={() => {
+                    document.getElementById("form2")?.classList.add("hidden");
+                    document
+                      .getElementById("form1")
+                      ?.classList.remove("hidden");
+                  }}
+                  className="feminine-button px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto order-2 sm:order-1"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Próximo <ArrowRight className="w-5 h-5" />
+                  Anterior
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    document.getElementById("form2")?.classList.add("hidden");
+                    document
+                      .getElementById("form3")
+                      ?.classList.remove("hidden");
+                  }}
+                  className="feminine-button px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto order-1 sm:order-2"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Próximo <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </span>
                 </button>
               </div>
             </div>
           </div>
 
-          <div id="form3" className="w-full h-auto hidden space-y-6">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-feminine">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center flex items-center justify-center gap-2">
-                <Target className="w-6 h-6 text-pink-500" />
+          {/* Terceira etapa - Áreas do corpo */}
+          <div
+            id="form3"
+            className="w-full h-auto hidden space-y-4 sm:space-y-6"
+          >
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-feminine">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6 text-center flex items-center justify-center gap-2">
+                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-pink-500" />
                 Áreas do Corpo para Perda de Gordura
               </h3>
 
-              <p className="text-sm text-gray-600 mb-6 text-center">
-                Em qual parte do corpo você deseja perder mais gordura?
-              </p>
-
-              {/* Imagem do corpo */}
-              <div className="flex justify-center mb-6">
-                <div className="relative">
+              <div className="space-y-4 sm:space-y-6">
+                {/* Imagem do corpo */}
+                <div className="text-center mb-4 sm:mb-6">
                   <Image
                     src="/body.webp"
-                    alt="Áreas do corpo - A=Abdômen, B=Culotes, C=Braços, D=Quadris, E=Pernas, F=Outras, G=Nenhuma, H=Todo o corpo"
+                    alt="Áreas do corpo"
                     width={150}
                     height={150}
-                    className="rounded-lg shadow-feminine"
-                    onLoad={() => setImagemCarregada(true)}
-                    onError={() => setImagemCarregada(false)}
-                    priority
+                    className="mx-auto rounded-lg shadow-lg"
+                    onError={(e) =>
+                      console.error("Erro ao carregar imagem:", e)
+                    }
+                    onLoad={() => console.log("Imagem carregada com sucesso")}
                   />
+                </div>
 
-                  {/* Legenda das áreas */}
-                  {/* <div className="mt-4 text-center text-sm text-gray-600">
-                    <p className="font-medium mb-2">Legenda das áreas:</p>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <span>A = Abdômen</span>
-                      <span>B = Culotes</span>
-                      <span>C = Braços</span>
-                      <span>D = Quadris</span>
-                      <span>E = Pernas</span>
-                      <span>F = Outras áreas</span>
-                      <span>G = Nenhuma</span>
-                      <span>H = Todo o corpo</span>
+                {/* Checkboxes das áreas */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  {Object.entries(areasCorpo).map(([key, value]) => (
+                    <div key={key} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id={key}
+                        checked={value}
+                        onChange={() => handleAreaChange(key)}
+                        className="feminine-checkbox"
+                      />
+                      <label
+                        htmlFor={key}
+                        className="text-sm sm:text-base text-gray-700 ml-3 font-medium cursor-pointer"
+                      >
+                        {key === "A" && "Abdomen"}
+                        {key === "B" && "Culotes"}
+                        {key === "C" && "Braços"}
+                        {key === "D" && "Quadris"}
+                        {key === "E" && "Pernas"}
+                        {key === "F" && "Outras áreas"}
+                        {key === "G" && "Nenhuma"}
+                        {key === "H" && "Todo o corpo"}
+                      </label>
                     </div>
-                  </div> */}
+                  ))}
                 </div>
+
+                {/* Textarea para outras áreas */}
+                {areasCorpo.F && (
+                  <div className="mb-4 sm:mb-6">
+                    <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                      Qual seria a área específica do seu corpo?
+                    </label>
+                    <textarea
+                      className="feminine-textarea w-full text-sm sm:text-base"
+                      value={outrasAreas}
+                      onChange={(e) => setOutrasAreas(e.target.value)}
+                      placeholder="Descreva as áreas específicas..."
+                      rows={3}
+                    ></textarea>
+                  </div>
+                )}
               </div>
 
-              {/* Checkboxes das áreas */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="flex items-center">
-                  <input
-                    id="areaA"
-                    type="checkbox"
-                    checked={areasCorpo.A}
-                    onChange={() => handleAreaChange("A")}
-                    className="feminine-checkbox"
-                  />
-                  <label
-                    htmlFor="areaA"
-                    className="text-gray-700 text-sm ml-3 font-medium"
-                  >
-                    A - Abdômen
-                  </label>
-                </div>
-
-                <div className="flex items-center">
-                  <input
-                    id="areaB"
-                    type="checkbox"
-                    checked={areasCorpo.B}
-                    onChange={() => handleAreaChange("B")}
-                    className="feminine-checkbox"
-                  />
-                  <label
-                    htmlFor="areaB"
-                    className="text-gray-700 text-sm ml-3 font-medium"
-                  >
-                    B - Culotes
-                  </label>
-                </div>
-
-                <div className="flex items-center">
-                  <input
-                    id="areaC"
-                    type="checkbox"
-                    checked={areasCorpo.C}
-                    onChange={() => handleAreaChange("C")}
-                    className="feminine-checkbox"
-                  />
-                  <label
-                    htmlFor="areaC"
-                    className="text-gray-700 text-sm ml-3 font-medium"
-                  >
-                    C - Braços
-                  </label>
-                </div>
-
-                <div className="flex items-center">
-                  <input
-                    id="areaD"
-                    type="checkbox"
-                    checked={areasCorpo.D}
-                    onChange={() => handleAreaChange("D")}
-                    className="feminine-checkbox"
-                  />
-                  <label
-                    htmlFor="areaD"
-                    className="text-gray-700 text-sm ml-3 font-medium"
-                  >
-                    D - Quadris
-                  </label>
-                </div>
-
-                <div className="flex items-center">
-                  <input
-                    id="areaE"
-                    type="checkbox"
-                    checked={areasCorpo.E}
-                    onChange={() => handleAreaChange("E")}
-                    className="feminine-checkbox"
-                  />
-                  <label
-                    htmlFor="areaE"
-                    className="text-gray-700 text-sm ml-3 font-medium"
-                  >
-                    E - Pernas
-                  </label>
-                </div>
-
-                <div className="flex items-center">
-                  <input
-                    id="areaF"
-                    type="checkbox"
-                    checked={areasCorpo.F}
-                    onChange={() => handleAreaChange("F")}
-                    className="feminine-checkbox"
-                  />
-                  <label
-                    htmlFor="areaF"
-                    className="text-gray-700 text-sm ml-3 font-medium"
-                  >
-                    F - Outras áreas
-                  </label>
-                </div>
-
-                <div className="flex items-center">
-                  <input
-                    id="areaG"
-                    type="checkbox"
-                    checked={areasCorpo.G}
-                    onChange={() => handleAreaChange("G")}
-                    className="feminine-checkbox"
-                  />
-                  <label
-                    htmlFor="areaG"
-                    className="text-gray-700 text-sm ml-3 font-medium"
-                  >
-                    G - Nenhuma
-                  </label>
-                </div>
-
-                <div className="flex items-center">
-                  <input
-                    id="areaH"
-                    type="checkbox"
-                    checked={areasCorpo.H}
-                    onChange={() => handleAreaChange("H")}
-                    className="feminine-checkbox"
-                  />
-                  <label
-                    htmlFor="areaH"
-                    className="text-gray-700 text-sm ml-3 font-medium"
-                  >
-                    H - Todo o corpo
-                  </label>
-                </div>
-              </div>
-
-              {/* Textarea para outras áreas */}
-              {areasCorpo.F && (
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Qual seria a área específica do seu corpo?
-                  </label>
-                  <textarea
-                    className="feminine-textarea w-full"
-                    value={outrasAreas}
-                    onChange={(e) => setOutrasAreas(e.target.value)}
-                    placeholder="Descreva as áreas específicas..."
-                  ></textarea>
-                </div>
-              )}
-
-              <div className="flex justify-center">
+              {/* Botões de navegação */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-6 sm:mt-8">
                 <button
-                  className="feminine-button px-8 py-3 text-lg"
-                  type="submit"
+                  type="button"
+                  onClick={() => {
+                    document.getElementById("form3")?.classList.add("hidden");
+                    document
+                      .getElementById("form2")
+                      ?.classList.remove("hidden");
+                  }}
+                  className="feminine-button px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto order-2 sm:order-1"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Criar Meu Treino <Sparkles className="w-5 h-5" />
+                  Anterior
+                </button>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="feminine-button px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto order-1 sm:order-2"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Criar Meu Treino{" "}
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
                   </span>
                 </button>
               </div>
@@ -773,9 +662,10 @@ export default function FormData() {
           </div>
         </form>
 
-        <div className="text-center mt-8 max-w-2xl">
-          <p className="text-sm text-gray-500 font-light leading-relaxed flex items-center justify-center gap-2">
-            <AlertTriangle className="w-4 h-4 text-orange-500" />
+        {/* Aviso de atenção */}
+        <div className="text-center mt-6 sm:mt-8 max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed flex items-center justify-center gap-2 px-4">
+            <AlertTriangle className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500" />
             <span>
               <strong>Atenção:</strong> Procure um profissional credenciado.
               Lembre-se que este app retorna informações geradas por uma IA e
@@ -783,7 +673,7 @@ export default function FormData() {
             </span>
           </p>
         </div>
-      </section>
+      </div>
     </main>
   );
 }
