@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -11,7 +11,11 @@ import {
   Dumbbell,
   Heart,
   Apple,
+  MapPin,
+  Calendar,
+  Scale,
   Ruler,
+  Zap,
 } from "lucide-react";
 
 interface UserData {
@@ -25,20 +29,11 @@ interface UserData {
   problemSaude: string;
   alimentos: string;
   alergicos: string;
-  areasCorpo: {
-    A: boolean;
-    B: boolean;
-    C: boolean;
-    D: boolean;
-    E: boolean;
-    F: boolean;
-    G: boolean;
-    H: boolean;
-  };
+  areasCorpo: Record<string, boolean>;
   outrasAreas: string;
 }
 
-export default function ResponseData() {
+function ResponseContent() {
   const searchParams = useSearchParams();
   const [texto, setTexto] = useState("");
   const [dados, setDados] = useState<UserData | null>(null);
@@ -93,54 +88,42 @@ export default function ResponseData() {
   }, [searchParams]);
 
   const handlePrint = () => {
-    // Aguardar um pouco para garantir que todos os estilos sejam aplicados
+    // Aguardar um pouco para os estilos serem aplicados
     setTimeout(() => {
-      // Configurar opções de impressão
-      const printOptions = {
-        silent: false,
-        printBackground: true,
-        color: true,
-        margin: {
-          marginType: "custom",
-          top: 0.6,
-          bottom: 0.6,
-          left: 0.6,
-          right: 0.6,
-        },
-        landscape: false,
-        pagesPerSheet: 1,
-        collate: false,
-        copies: 1,
-        header: "",
-        footer: "",
-      };
-
-      // Chamar impressão
       window.print();
     }, 100);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-feminine-gradient flex items-center justify-center">
-        <div className="feminine-spinner"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-white to-purple-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-pink-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">Carregando seus dados...</p>
+        </div>
       </div>
     );
   }
 
-  if (!texto || !dados) {
+  if (!dados || !texto) {
     return (
-      <div className="min-h-screen bg-feminine-gradient flex flex-col items-center justify-center">
-        <div className="text-center space-y-6 px-6">
-          <h1 className="text-2xl font-bold text-gray-800">
-            Erro ao carregar dados
-          </h1>
-          <Link href="/form">
-            <button className="feminine-button px-6 py-3 flex items-center gap-2">
-              <Sparkles className="w-4 h-4" />
-              Voltar ao Formulário
-            </button>
-          </Link>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-white to-purple-50">
+        <div className="text-center max-w-md mx-auto p-8">
+          <div className="bg-white rounded-2xl p-8 shadow-feminine">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+              Nenhum dado encontrado
+            </h1>
+            <p className="text-gray-600 mb-6">
+              Parece que não há dados para exibir. Por favor, volte ao
+              formulário e crie seu treino personalizado.
+            </p>
+            <Link href="/form">
+              <button className="feminine-button px-6 py-3 flex items-center gap-2">
+                <Sparkles className="w-4 h-4" />
+                Voltar ao Formulário
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -689,5 +672,13 @@ export default function ResponseData() {
         }
       `}</style>
     </div>
+  );
+}
+
+export default function ResponseData() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <ResponseContent />
+    </Suspense>
   );
 }

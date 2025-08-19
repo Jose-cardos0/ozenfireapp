@@ -66,10 +66,6 @@ export const metadata: Metadata = {
     shortcut: "/ozemfirelogo.png.png",
   },
   manifest: "/manifest.json",
-  themeColor: "#FF99CC",
-  colorScheme: "light",
-  viewport:
-    "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
   applicationName: "Ozemfire",
   appleWebApp: {
     capable: true,
@@ -89,6 +85,16 @@ export const metadata: Metadata = {
     "msapplication-TileColor": "#FF99CC",
     "msapplication-config": "/browserconfig.xml",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
+  themeColor: "#FF99CC",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
