@@ -1,0 +1,67 @@
+{
+  "short_name": "Ozemfire",
+  "name": "Ozemfire - Treino Feminino com IA",
+  "description": "Crie sua cartilha de treino personalizada com inteligência artificial, focado no universo feminino",
+  "icons": [
+    {
+      "src": "ozemfirelogo.png.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "ozemfirelogo.png.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "ozemfirelogo.png.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#FF99CC",
+  "background_color": "#FFE8F2",
+  "orientation": "portrait",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "categories": ["health", "fitness", "lifestyle"],
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "display_override": ["standalone", "minimal-ui"],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "shortcuts": [
+    {
+      "name": "Criar Treino",
+      "short_name": "Treino",
+      "description": "Criar um novo treino personalizado",
+      "url": "/form",
+      "icons": [
+        {
+          "src": "ozemfirelogo.png.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Minha Dieta",
+      "short_name": "Dieta",
+      "description": "Visualizar dieta personalizada",
+      "url": "/response",
+      "icons": [
+        {
+          "src": "ozemfirelogo.png.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

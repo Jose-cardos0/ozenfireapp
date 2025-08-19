@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,11 +17,25 @@ export const metadata: Metadata = {
   title: "Ozemfire - Treino Feminino com IA",
   description:
     "Crie sua cartilha de treino personalizada com inteligência artificial, focado no universo feminino",
-  icons: "/ozemfirelogo.png.png",
+  keywords: [
+    "treino",
+    "dieta",
+    "fitness",
+    "feminino",
+    "IA",
+    "saúde",
+    "academia",
+  ],
+  authors: [{ name: "Ozemfire Team" }],
+  creator: "Ozemfire",
+  publisher: "Ozemfire",
+  robots: "index, follow",
   openGraph: {
     title: "Ozemfire - Treino Feminino com IA",
     description:
       "Crie sua cartilha de treino personalizada com inteligência artificial, focado no universo feminino",
+    url: "https://ozemfire.com",
+    siteName: "Ozemfire",
     images: [
       {
         url: "/ozemfirelogo.png.png",
@@ -29,7 +44,50 @@ export const metadata: Metadata = {
         alt: "Ozemfire - Treino Feminino com IA",
       },
     ],
+    locale: "pt_BR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ozemfire - Treino Feminino com IA",
+    description:
+      "Crie sua cartilha de treino personalizada com inteligência artificial, focado no universo feminino",
+    images: ["/ozemfirelogo.png.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/ozemfirelogo.png.png", sizes: "16x16", type: "image/png" },
+      { url: "/ozemfirelogo.png.png", sizes: "32x32", type: "image/png" },
+      { url: "/ozemfirelogo.png.png", sizes: "64x64", type: "image/png" },
+    ],
+    apple: [
+      { url: "/ozemfirelogo.png.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/ozemfirelogo.png.png",
+  },
+  manifest: "/manifest.json",
+  themeColor: "#FF99CC",
+  colorScheme: "light",
+  viewport:
+    "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
+  applicationName: "Ozemfire",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Ozemfire",
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
+    "apple-mobile-web-app-title": "Ozemfire",
+    "msapplication-TileColor": "#FF99CC",
+    "msapplication-config": "/browserconfig.xml",
   },
 };
 
@@ -43,6 +101,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ServiceWorkerRegistration />
         {children}
       </body>
     </html>

@@ -29,7 +29,7 @@ export default function Home() {
         {/* Título e descrição */}
         <div className="space-y-4">
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
-            Ozemfire
+            Ozemfire <br /> - Mounjaro Effects -
           </h1>
           <p className="text-xl md:text-2xl font-light text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Crie sua cartilha de treino personalizada com inteligência
