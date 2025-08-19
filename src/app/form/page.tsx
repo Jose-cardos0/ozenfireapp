@@ -4,17 +4,17 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { 
-  User, 
-  Calendar, 
-  Target, 
-  Heart, 
-  Apple, 
-  AlertTriangle, 
-  ArrowRight, 
+import {
+  User,
+  Calendar,
+  Target,
+  Heart,
+  Apple,
+  AlertTriangle,
+  ArrowRight,
   Sparkles,
   Dumbbell,
-  MapPin
+  MapPin,
 } from "lucide-react";
 
 const API_KEY = "AIzaSyD2DGLj6TrFyuU7rsigVe4UCIGmcKkzw-g";
@@ -128,14 +128,14 @@ export default function FormData() {
       });
 
       const mensagem = `MONTE UM TREINO PARA UM ${sexo} de ${peso} com ${altura} e idade ${idade} anos.
-       Ele frequenta a academia ${frequencia} e tem o foco de ${objetivo}. 
-       Monte um treino 
-       detalhado com as quantidades
-       de repetição e progressão de carga adequada semanalmente. Lembre-se que se o ${sexo} for 
-       feminino o treino deve ser focado em inferiores.
-        Aproveite e monte uma dieta baseada no calculo IMC ${altura}, ${peso} e ${objetivo}. 
-        Coloque os alimentos ${alimentos} no plano da dieta, remova os alimentos ${alergicos}. Lembre-se, eu tenho um problema de saúde que é ${problemSaude}, 
-        monte o treino e a dieta de acordo com minhas necessidades e restrições. A dieta deve ser detalhada kcal por refeição, 
+     Ele frequenta a academia ${frequencia} e tem o foco de ${objetivo}. 
+     Monte um treino 
+     detalhado com as quantidades
+     de repetição e progressão de carga adequada semanalmente. Lembre-se que se o ${sexo} for 
+     feminino o treino deve ser focado em inferiores.
+      Aproveite e monte uma dieta baseada no calculo IMC ${altura}, ${peso} e ${objetivo}. 
+      Coloque os alimentos ${alimentos} no plano da dieta, remova os alimentos ${alergicos}. Lembre-se, eu tenho um problema de saúde que é ${problemSaude}, 
+      monte o treino e a dieta de acordo com minhas necessidades e restrições. A dieta deve ser detalhada kcal por refeição, 
         quantidade de proteina, carboidrados e gordura por refeição. 
         O usuário deseja perder gordura nas seguintes áreas do corpo: ${areasSelecionadas}${
         outrasAreas ? `, especificamente: ${outrasAreas}` : ""
@@ -782,8 +782,8 @@ export default function FormData() {
             <AlertTriangle className="w-4 h-4 text-orange-500" />
             <span>
               <strong>Atenção:</strong> Procure um profissional credenciado.
-              Lembre-se que este app retorna informações geradas por uma IA e deve
-              ser usado como orientação complementar.
+              Lembre-se que este app retorna informações geradas por uma IA e
+              deve ser usado como orientação complementar.
             </span>
           </p>
         </div>
