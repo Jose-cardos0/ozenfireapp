@@ -11,11 +11,7 @@ import {
   Dumbbell,
   Heart,
   Apple,
-  MapPin,
-  Calendar,
-  Scale,
   Ruler,
-  Zap,
 } from "lucide-react";
 
 interface UserData {

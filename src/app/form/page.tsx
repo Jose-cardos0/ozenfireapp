@@ -6,15 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   User,
-  Calendar,
   Target,
-  Heart,
   Apple,
   AlertTriangle,
   ArrowRight,
   Sparkles,
-  Dumbbell,
-  MapPin,
 } from "lucide-react";
 
 const API_KEY = "AIzaSyD2DGLj6TrFyuU7rsigVe4UCIGmcKkzw-g";
